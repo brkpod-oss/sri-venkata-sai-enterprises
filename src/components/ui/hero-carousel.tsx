@@ -2,11 +2,18 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+interface SlideItem {
+  src: string;
+  href?: string;
+  alt?: string;
+}
+
 interface HeroCarouselProps {
-  images: string[];
+  images: (string | SlideItem)[];
   autoPlayInterval?: number;
   className?: string;
 }
@@ -73,19 +80,58 @@ export function HeroCarousel({
         className="flex transition-transform duration-700 ease-in-out h-full"
         style={{ transform: `translateX(-${(currentIndex / images.length) * 100}%)` }}
       >
-        {images.map((imgSrc, index) => (
-          <div key={index} className="min-w-full h-full relative">
-            <Image
-              src={imgSrc}
-              alt={`Slide ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-            {/* Subtle gradient overlay to make arrows and dots stand out better if images are bright */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-          </div>
-        ))}
+        {images.map((item, index) => {
+          if (!item) return null;
+
+          let src = "";
+          let href: string | undefined = undefined;
+          let alt = `Slide ${index + 1}`;
+
+          if (typeof item === "string") {
+            src = item;
+          } else if (typeof item === "object") {
+            src = (item as any).src || "";
+            href = (item as any).href;
+            alt = (item as any).alt || alt;
+          }
+
+          if (!src) return null;
+
+          const slideContent = (
+            <div className="w-full h-full relative min-w-full">
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              
+              {href && (
+                <div className="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 z-20">
+                  <span className="inline-flex items-center gap-1.5 rounded-xl bg-white px-5 py-3 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 shadow-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform active:scale-95">
+                    Shop Now
+                  </span>
+                </div>
+              )}
+            </div>
+          );
+
+          if (href) {
+            return (
+              <Link key={index} href={href} className="min-w-full h-full relative block overflow-hidden">
+                {slideContent}
+              </Link>
+            );
+          }
+
+          return (
+            <div key={index} className="min-w-full h-full relative overflow-hidden">
+              {slideContent}
+            </div>
+          );
+        })}
       </div>
 
       {/* Navigation Arrows */}

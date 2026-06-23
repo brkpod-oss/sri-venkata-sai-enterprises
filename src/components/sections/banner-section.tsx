@@ -10,6 +10,10 @@ const SLIDE_IMAGES = [
   "/images/slides/slide3.webp",
   "/images/slides/slide4.webp",
   "/images/slides/slide5.jpeg",
+  {
+    src: "/images/slides/vivo-t5-pro-banner.jpg",
+    href: "/products/vivo-t5-pro",
+  },
 ];
 
 interface SideBanner {
