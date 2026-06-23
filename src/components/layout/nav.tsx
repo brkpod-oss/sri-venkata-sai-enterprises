@@ -84,7 +84,7 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden flex-1 items-center justify-center gap-8 md:flex">
+          <nav className="hidden flex-none items-center justify-center gap-5 lg:flex xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -101,13 +101,13 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
           </nav>
 
           {/* Desktop actions */}
-          <div className="hidden items-center gap-5 md:flex min-w-0 flex-1 justify-end">
-            <div className="min-w-[240px] max-w-md mr-2 shrink">
+          <div className="hidden items-center gap-3 lg:flex min-w-0 flex-none justify-end xl:gap-5">
+            <div className="min-w-[180px] max-w-[280px] xl:max-w-md mr-1 shrink">
               <ProductSearch />
             </div>
-            <Button variant="secondary" size="sm" as="a" href={`tel:${phoneTel}`}>
-              <Phone className="mr-1.5 h-3.5 w-3.5" />
-              Call Now
+            <Button variant="secondary" size="sm" as="a" href={`tel:${phoneTel}`} className="px-3 xl:px-4 shrink-0">
+              <Phone className="h-4 w-4 xl:mr-1.5" />
+              <span className="hidden xl:inline">Call Now</span>
             </Button>
             <Button
               variant="whatsapp"
@@ -116,9 +116,10 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              className="px-3 xl:px-4 shrink-0"
             >
-              <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
-              WhatsApp
+              <MessageCircle className="h-4 w-4 xl:mr-1.5" />
+              <span className="hidden xl:inline">WhatsApp</span>
             </Button>
             <Link
               href="/cart"
@@ -139,7 +140,7 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
           </div>
 
           {/* Mobile menu and search toggle */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               className="flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 hover:bg-slate-100"
               onClick={() => {
@@ -174,7 +175,7 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.25, 0.4, 0.25, 1] as const }}
-            className="overflow-hidden border-t border-slate-200 bg-white/95 backdrop-blur-md md:hidden shadow-lg"
+            className="overflow-hidden border-t border-slate-200 bg-white/95 backdrop-blur-md lg:hidden shadow-lg"
           >
             <div className="p-4">
               <ProductSearch onSelect={() => setSearchOpen(false)} />
@@ -191,7 +192,7 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.25, 0.4, 0.25, 1] as const }}
-            className="overflow-hidden border-t border-slate-200 bg-white/95 backdrop-blur-md md:hidden shadow-lg"
+            className="overflow-hidden border-t border-slate-200 bg-white/95 backdrop-blur-md lg:hidden shadow-lg"
           >
             <div className="flex flex-col gap-2 px-5 py-4">
               {navLinks.map((link) => (

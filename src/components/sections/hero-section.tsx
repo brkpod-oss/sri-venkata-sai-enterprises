@@ -196,7 +196,7 @@ export function HeroSection({
       {/* ── 2. Phone Showcase Carousel ── */}
       {carouselProducts.length > 0 && (
         <motion.div
-          className="relative z-10 mx-auto mb-20 w-full max-w-7xl"
+          className="relative z-10 mx-auto mb-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -204,19 +204,10 @@ export function HeroSection({
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-        <div className="relative overflow-hidden rounded-3xl bg-slate-50/50 px-4 py-10 sm:px-10 lg:px-14">
-          {/* Locked Featured Badge in the absolute center */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 bottom-0 z-30 flex justify-center pb-10 pt-10">
-            <div className="relative flex w-[280px] items-end justify-center" style={{ height: "460px" }}>
-              <div className="absolute bottom-[372px] left-1/2 -translate-x-1/2 rounded-full bg-amber-500 px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
-                Featured
-              </div>
-            </div>
-          </div>
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows (Outside overflow-hidden container for more breathing room) */}
           <button
             onClick={handlePrev}
-            className="absolute left-2 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200/80 bg-white/90 text-slate-600 shadow-lg shadow-slate-900/5 backdrop-blur-md transition-all hover:bg-white hover:text-blue-600 hover:shadow-xl sm:left-4"
+            className="absolute left-0 sm:left-2 xl:-left-6 top-[316px] z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200/80 bg-white/95 text-slate-600 shadow-lg shadow-slate-900/5 backdrop-blur-md transition-all hover:bg-white hover:text-blue-600 hover:shadow-xl"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -224,11 +215,21 @@ export function HeroSection({
 
           <button
             onClick={handleNext}
-            className="absolute right-2 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200/80 bg-white/90 text-slate-600 shadow-lg shadow-slate-900/5 backdrop-blur-md transition-all hover:bg-white hover:text-blue-600 hover:shadow-xl sm:right-4"
+            className="absolute right-0 sm:right-2 xl:-right-6 top-[316px] z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200/80 bg-white/95 text-slate-600 shadow-lg shadow-slate-900/5 backdrop-blur-md transition-all hover:bg-white hover:text-blue-600 hover:shadow-xl"
             aria-label="Next slide"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
+
+          <div className="relative overflow-hidden rounded-3xl bg-slate-50/50 px-4 py-10 sm:px-10 lg:px-14">
+            {/* Locked Featured Badge in the absolute center (aligned to 300px card width) */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 bottom-0 z-30 flex justify-center pb-10 pt-10">
+              <div className="relative flex w-[300px] items-end justify-center" style={{ height: "460px" }}>
+                <div className="absolute bottom-[372px] left-1/2 -translate-x-1/2 rounded-full bg-amber-500 px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
+                  Featured
+                </div>
+              </div>
+            </div>
 
           {/* Track */}
           <div
@@ -261,10 +262,10 @@ export function HeroSection({
                   <Link
                     href={`/products/${product.slug}`}
                     onClick={(e) => isDragging && e.preventDefault()}
-                    className={`relative flex flex-col items-center rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5 transition-all duration-500 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-900/10 ${
+                    className={`relative flex w-full max-w-[300px] mx-auto flex-col items-center rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5 transition-all duration-500 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-900/10 ${
                       isCenter
-                        ? "z-20 w-[280px] translate-y-0 scale-100 p-6 opacity-100 shadow-xl shadow-slate-200/50"
-                        : "z-10 w-[220px] translate-y-6 scale-[0.92] rounded-xl p-5 opacity-70 hover:opacity-100"
+                        ? "z-20 translate-y-0 scale-100 p-6 opacity-100 shadow-xl shadow-slate-200/50"
+                        : "z-10 translate-y-6 scale-[0.88] rounded-xl p-5 opacity-70 hover:opacity-100"
                     }`}
                   >
                     <div
