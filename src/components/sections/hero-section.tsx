@@ -47,7 +47,7 @@ export function HeroSection({
   secondaryCtaLink,
 }: {
   products: Product[];
-  title?: string;
+  title?: string | React.ReactNode;
   subtitle?: string;
   slides?: string[];
   primaryCtaText?: string;
@@ -65,7 +65,11 @@ export function HeroSection({
   const featured = products.filter((p) => p.featured).slice(0, 6);
   const carouselProducts = featured.length > 0 ? featured : products.slice(0, 6);
   const displaySlides = slides?.length ? slides : DEFAULT_SLIDES;
-  const displayTitle = title || "Latest Mobiles at Best Prices";
+  const displayTitle = title || (
+    <>
+      Latest Mobiles <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">at Best Prices</span>
+    </>
+  );
   const displaySubtitle = subtitle || "Shop genuine smartphones with EMI options, exchange offers, and personal buying help";
   const translatePercent = carouselProducts.length > 0 ? (currentIndex / carouselProducts.length) * 100 : 0;
 
@@ -136,7 +140,7 @@ export function HeroSection({
 
         <motion.h1
           variants={fadeUp}
-          className="mb-6 text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl"
+          className="mb-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl md:whitespace-nowrap"
         >
           {displayTitle}
         </motion.h1>
