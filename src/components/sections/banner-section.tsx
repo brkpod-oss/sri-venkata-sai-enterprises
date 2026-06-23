@@ -38,9 +38,9 @@ const rightBanners: SideBanner[] = [
     href: "/products/iqoo-neo-10",
   },
   {
-    src: "/images/banners/vivo-t4-pro-in-nitro-blue-lg-x2.jpg.jpeg",
-    alt: "Vivo T4 Pro",
-    href: "/products/vivo-t4-pro",
+    src: "/images/banners/vivo-t5-pro-banner.jpg",
+    alt: "Vivo T5 Pro 5G",
+    href: "/products/vivo-t5-pro",
   },
 ];
 
@@ -51,7 +51,7 @@ function SideColumn({ banners }: { banners: SideBanner[] }) {
         <Link
           key={i}
           href={banner.href}
-          className="relative flex-1 overflow-hidden rounded-2xl bg-slate-100 group"
+          className="relative flex-1 overflow-hidden rounded-2xl bg-slate-100 group shadow-sm hover:shadow-md transition-shadow"
         >
           <Image
             src={banner.src}
@@ -61,6 +61,9 @@ function SideColumn({ banners }: { banners: SideBanner[] }) {
             sizes="(max-width: 1024px) 0px, 20vw"
           />
           <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+          <div className="absolute bottom-4 left-4 z-10 rounded-lg bg-white/95 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-slate-900 shadow-md backdrop-blur-sm transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105">
+            Shop Now
+          </div>
         </Link>
       ))}
     </div>
