@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     `best mobile shop ${siteConfig.address.city}`,
   ],
   icons: {
-    icon: [{ url: "/icon.jpg", type: "image/jpeg" }],
-    apple: [{ url: "/icon.jpg" }],
+    icon: [{ url: "/logo.jpg", type: "image/jpeg" }],
+    apple: [{ url: "/logo.jpg" }],
   },
   openGraph: {
     type: "website",

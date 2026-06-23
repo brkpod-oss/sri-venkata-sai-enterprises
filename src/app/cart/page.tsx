@@ -237,6 +237,7 @@ export default function CartPage() {
               <h2 className="mb-6 text-[16px] font-bold">Order Details</h2>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <input type="text" name="website" className="absolute -left-[9999px]" tabIndex={-1} autoComplete="off" aria-hidden="true" />
                 <div className="relative">
                   <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-subtle" />
                   <input
