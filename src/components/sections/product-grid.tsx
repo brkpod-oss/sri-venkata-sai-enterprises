@@ -14,7 +14,7 @@ export function ProductGrid({ products }: { products: Product[] }) {
   const featured = products.filter((p) => p.featured);
   const shown = (featured.length >= GRID_SIZE ? featured : products).slice(0, GRID_SIZE);
   return (
-    <Section className="bg-white" container="sm" id="products">
+    <Section className="bg-white" container="sm" id="products" initial={{ opacity: 1, y: 0 }}>
       <div className="w-full">
         <div className="mb-12 flex flex-col items-center justify-center text-center">
           <span className="mb-3 block text-xs font-bold uppercase tracking-widest text-blue-600">

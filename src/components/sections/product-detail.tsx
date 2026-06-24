@@ -337,7 +337,7 @@ export function ProductDetail({ product, galleryImages }: { product: Product; ga
                         size="xl"
                         href={`${siteConfig.whatsappUrl}?text=${encodeURIComponent(
                           `Hi ${siteConfig.storeName}, I would like to enquire about the ${product.name}.`
-                        )}%0A%0AURL:%20${typeof window !== "undefined" ? encodeURIComponent(window.location.href) : ""}`}
+                        )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-[0.5] rounded-2xl px-2 sm:px-4"
