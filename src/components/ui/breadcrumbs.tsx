@@ -57,10 +57,7 @@ export async function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
   const breadcrumbItems = items ?? buildBreadcrumbItems(pathname);
 
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL &&
-    process.env.NEXT_PUBLIC_SITE_URL !== "https://www.srivenkatasaienterprises.com"
-      ? process.env.NEXT_PUBLIC_SITE_URL
-      : process.env.NEXT_PUBLIC_SITE_URL || "https://www.srivenkatasaienterprises.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://srivenkatasaienterprises.com";
 
   const jsonLd = {
     "@context": "https://schema.org",

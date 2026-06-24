@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   ];
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.srivenkatasaienterprises.com"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://srivenkatasaienterprises.com"),
     title: {
       default: settings.seoTitleTemplate || `${settings.companyName} | Premium Mobile Store in ${settings.city || "Ongole"}`,
       template: titleTemplate,
