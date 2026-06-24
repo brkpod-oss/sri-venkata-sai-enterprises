@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 /**
  * Sparkles — floating sparkle dots around children.
- * Perfect for promo badges, sale tags, and highlighted text.
+ * Uses useState+useEffect to avoid SSR hydration mismatch from Math.random().
  */
 export function Sparkles({
   children,
@@ -15,14 +16,22 @@ export function Sparkles({
   className?: string;
   count?: number;
 }) {
-  const sparkles = Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1.5,
-    delay: Math.random() * 2,
-    duration: Math.random() * 1.5 + 1,
-  }));
+  const [sparkles, setSparkles] = useState<
+    { id: number; x: number; y: number; size: number; delay: number; duration: number }[]
+  >([]);
+
+  useEffect(() => {
+    setSparkles(
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1.5,
+        delay: Math.random() * 2,
+        duration: Math.random() * 1.5 + 1,
+      }))
+    );
+  }, [count]);
 
   return (
     <span className={`relative inline-block ${className}`}>
