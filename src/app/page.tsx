@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { BrandStrip } from "@/components/sections/brand-strip";
 import { BrandCarousel } from "@/components/sections/brand-carousel";
+import { PromoBannerGrid } from "@/components/sections/promo-banner-grid";
 import { BentoDeals } from "@/components/sections/bento-deals";
 import { BestSelling } from "@/components/sections/best-selling";
 
@@ -101,9 +102,10 @@ export default async function Home() {
           secondaryCtaText={secondaryCtaText}
           secondaryCtaLink={secondaryCtaLink}
         />
-        <BrandStrip brands={brands} />
-        <BrandCarousel />
-        <ProductGrid products={products} />
+      <PromoBannerGrid />
+      <ProductGrid products={products} />
+      <BrandStrip brands={brands} />
+      <BrandCarousel />
         <BestSelling products={products} />
 
         <TopRatedPerformance products={topRatedProducts} />
