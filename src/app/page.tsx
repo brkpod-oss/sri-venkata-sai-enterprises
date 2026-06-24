@@ -1,9 +1,10 @@
 import { HeroSection } from "@/components/sections/hero-section";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { BrandStrip } from "@/components/sections/brand-strip";
+import { BrandCarousel } from "@/components/sections/brand-carousel";
 import { BentoDeals } from "@/components/sections/bento-deals";
 import { BestSelling } from "@/components/sections/best-selling";
-import PromoBanners from "@/components/sections/promo-banners";
+
 import { TopRatedPerformance } from "@/components/sections/top-rated-performance";
 import { ProductGrid } from "@/components/sections/product-grid";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -95,19 +96,19 @@ export default async function Home() {
           products={heroProducts}
           title={heroTitle}
           subtitle={heroSubtitle}
-          slides={heroSlides}
           primaryCtaText={primaryCtaText}
           primaryCtaLink={primaryCtaLink}
           secondaryCtaText={secondaryCtaText}
           secondaryCtaLink={secondaryCtaLink}
         />
         <BrandStrip brands={brands} />
+        <BrandCarousel />
         <BestSelling products={products} />
-        <PromoBanners />
-        <TrustStrip />
+
         <TopRatedPerformance products={topRatedProducts} />
         <BentoDeals offers={bentoDeals} />
         <ProductGrid products={products} />
+        <TrustStrip />
         <Testimonials testimonials={testimonials} />
         <FAQ items={faqs} />
         <ContactSection settings={settings} />

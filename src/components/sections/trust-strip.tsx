@@ -3,12 +3,13 @@
 import { motion } from "framer-motion";
 import { Clock, ShieldCheck, Star, Users } from "lucide-react";
 import { siteConfig } from "@/lib/data/siteConfig";
+import { NumberTicker } from "@/components/ui/number-ticker";
 
 const stats = [
-  { icon: Star, value: siteConfig.rating, label: "Google rating" },
-  { icon: Users, value: siteConfig.happyCustomers, label: "Happy customers" },
-  { icon: ShieldCheck, value: "100%", label: "Genuine products" },
-  { icon: Clock, value: "10-9", label: "Open every day" },
+  { icon: Star, value: siteConfig.rating, label: "Google rating", animated: false },
+  { icon: Users, value: siteConfig.happyCustomers, label: "Happy customers", animated: true, target: 4500, suffix: "+" },
+  { icon: ShieldCheck, value: "100%", label: "Genuine products", animated: false },
+  { icon: Clock, value: "10-9", label: "Open every day", animated: false },
 ];
 
 export function TrustStrip() {
@@ -27,7 +28,13 @@ export function TrustStrip() {
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600">
               <stat.icon className="h-5 w-5" aria-hidden="true" />
             </span>
-            <span className="text-[22px] font-extrabold text-slate-900">{stat.value}</span>
+            <span className="text-[22px] font-extrabold text-slate-900">
+              {stat.animated ? (
+                <NumberTicker target={stat.target!} suffix={stat.suffix} />
+              ) : (
+                stat.value
+              )}
+            </span>
             <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">
               {stat.label}
             </span>

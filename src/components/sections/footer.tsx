@@ -73,7 +73,7 @@ export function Footer({
             <p className="mt-4 max-w-xs text-sm text-slate-500 leading-relaxed font-medium">
               {footerText}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3" suppressHydrationWarning>
               <Button
                 variant="whatsapp"
                 size="sm"
@@ -135,12 +135,19 @@ export function Footer({
             <div className="mt-5 space-y-4 text-slate-500 font-medium">
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-slate-400 shrink-0 mt-0.5" />
-                <address className="not-italic text-sm leading-relaxed">
-                  {address.line1}<br />
-                  {address.line2}<br />
-                  {address.line3}<br />
-                  {address.line4}
-                </address>
+                <a
+                  href={siteConfig.address.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition"
+                >
+                  <address className="not-italic text-sm leading-relaxed">
+                    {address.line1}<br />
+                    {address.line2}<br />
+                    {address.line3}<br />
+                    {address.line4}
+                  </address>
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-slate-400 shrink-0" />

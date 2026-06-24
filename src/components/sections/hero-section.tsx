@@ -7,9 +7,11 @@ import { useState, useEffect } from "react";
 import { formatPrice } from "@/lib/data/products";
 import type { Product } from "@/lib/data/products";
 import { Button } from "@/components/ui/button";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { Particles } from "@/components/ui/particles";
 import { BadgeCheck, ChevronLeft, ChevronRight, ShieldCheck, ShoppingBag, Star } from "lucide-react";
 import { siteConfig } from "@/lib/data/siteConfig";
-import { HeroCarousel } from "@/components/ui/hero-carousel";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -28,23 +30,11 @@ const fadeUp: Variants = {
   },
 };
 
-const DEFAULT_SLIDES = [
-  "/images/slides/slide1.jpg",
-  "/images/slides/slide2.webp",
-  "/images/slides/slide3.webp",
-  "/images/slides/slide4.webp",
-  "/images/slides/slide5.jpeg",
-  {
-    src: "/images/slides/vivo-t5-pro-banner.jpg",
-    href: "/products/vivo-t5-pro",
-  },
-];
 
 export function HeroSection({
   products,
   title,
   subtitle,
-  slides,
   primaryCtaText,
   primaryCtaLink,
   secondaryCtaText,
@@ -53,7 +43,6 @@ export function HeroSection({
   products: Product[];
   title?: string | React.ReactNode;
   subtitle?: string;
-  slides?: string[];
   primaryCtaText?: string;
   primaryCtaLink?: string;
   secondaryCtaText?: string;
@@ -68,10 +57,12 @@ export function HeroSection({
 
   const featured = products.filter((p) => p.featured).slice(0, 6);
   const carouselProducts = featured.length > 0 ? featured : products.slice(0, 6);
-  const displaySlides = slides?.length ? slides : DEFAULT_SLIDES;
   const displayTitle = title || (
     <>
-      Latest Mobiles <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">at Best Prices</span>
+      Latest Mobiles{" "}
+      <AnimatedGradientText className="whitespace-nowrap">
+        at Best Prices
+      </AnimatedGradientText>
     </>
   );
   const displaySubtitle = subtitle || "Shop genuine smartphones with EMI options, exchange offers, and personal buying help";
@@ -123,6 +114,7 @@ export function HeroSection({
       <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-blue-50/80 via-white to-white" />
       <div className="pointer-events-none absolute -top-[10%] left-1/2 z-0 h-[700px] w-[900px] -translate-x-1/2 rounded-full bg-blue-400/10 blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-[10%] right-0 z-0 h-[500px] w-[500px] rounded-full bg-indigo-400/10 blur-[100px]" />
+      <Particles count={30} className="z-0 opacity-60" />
 
       {/* ── 1. Hero Typography & CTAs ── */}
       <motion.div
@@ -144,7 +136,7 @@ export function HeroSection({
 
         <motion.h1
           variants={fadeUp}
-          className="mb-6 text-lg xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 whitespace-nowrap max-w-full overflow-hidden text-ellipsis px-4"
+          className="mb-6 text-base xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900 whitespace-nowrap max-w-full overflow-hidden text-ellipsis px-4"
         >
           {displayTitle}
         </motion.h1>
@@ -157,15 +149,12 @@ export function HeroSection({
         </motion.p>
 
         <motion.div variants={fadeUp} className="mb-10 flex flex-wrap items-center justify-center gap-4">
-          <Button
-            size="lg"
-            as={Link}
-            href={primaryCtaLink || "/products"}
-            className="rounded-full shadow-lg shadow-blue-600/25"
-          >
-            <ShoppingBag className="mr-2 h-5 w-5" />
-            {primaryCtaText || "Browse Mobiles"}
-          </Button>
+          <Link href={primaryCtaLink || "/products"}>
+            <ShimmerButton>
+              <ShoppingBag className="mr-2 h-5 w-5 inline-block" />
+              {primaryCtaText || "Browse Mobiles"}
+            </ShimmerButton>
+          </Link>
           <Button
             variant="secondary"
             size="lg"
@@ -298,19 +287,7 @@ export function HeroSection({
       </motion.div>
       )}
 
-      {/* ── 3. Image Carousel ── */}
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={fadeUp}
-      >
-        <HeroCarousel
-          images={displaySlides}
-          className="h-[260px] rounded-2xl shadow-lg shadow-slate-900/5 ring-1 ring-slate-900/5 sm:h-[360px] md:h-[460px] lg:h-[560px]"
-        />
-      </motion.div>
+
     </section>
   );
 }

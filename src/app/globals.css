@@ -112,6 +112,14 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* Pause marquee on hover via Tailwind's group-hover */
+.pause-on-hover {
+  animation-play-state: running;
+}
+.group:hover .pause-on-hover {
+  animation-play-state: paused;
+}
+
 @keyframes scroll-indicator {
   0%, 100% { opacity: 1; transform: translateY(0); }
   50% { opacity: 0.5; transform: translateY(8px); }

@@ -13,6 +13,25 @@ import { ProductSearch } from "./product-search";
 import { siteConfig } from "@/lib/data/siteConfig";
 import type { SanitySiteSettings } from "@/sanity/types";
 
+const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Mobiles" },
@@ -92,7 +111,9 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
                   "relative inline-flex h-10 items-center px-1 text-sm font-semibold transition-colors",
-                  isActive(link.href) ? "text-blue-600" : "text-slate-600 hover:text-blue-600"
+                  isActive(link.href) ? "text-blue-600" : "text-slate-600 hover:text-blue-600",
+                  link.href === "/" && "pl-3",
+                  link.href === "/contact" && "pr-3"
                 )}
               >
                 {link.label}
@@ -102,7 +123,7 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-3 lg:flex min-w-0 flex-none justify-end xl:gap-5">
-            <div className="min-w-[180px] max-w-[280px] xl:max-w-md mr-1 shrink">
+            <div className="w-[150px] lg:w-[180px] xl:w-[240px] mr-1 shrink-0">
               <ProductSearch />
             </div>
             <Button variant="secondary" size="sm" as="a" href={`tel:${phoneTel}`} className="px-3 xl:px-4 shrink-0">
@@ -120,6 +141,18 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
             >
               <MessageCircle className="h-4 w-4 xl:mr-1.5" />
               <span className="hidden xl:inline">WhatsApp</span>
+            </Button>
+            <Button
+              variant="secondary"
+              size="sm"
+              as="a"
+              href="https://www.instagram.com/sri_venkata_sai_enterprises/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 xl:px-4 shrink-0 text-pink-600 hover:text-pink-700 hover:bg-pink-50"
+            >
+              <InstagramIcon className="h-4 w-4 xl:mr-1.5" />
+              <span className="hidden xl:inline">Instagram</span>
             </Button>
             <Link
               href="/cart"
@@ -230,6 +263,18 @@ export function Nav({ settings }: { settings?: SanitySiteSettings }) {
                 >
                   <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
                   WhatsApp
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  as="a"
+                  href="https://www.instagram.com/sri_venkata_sai_enterprises/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 justify-center text-pink-600 hover:text-pink-700 hover:bg-pink-50"
+                >
+                  <InstagramIcon className="mr-1.5 h-3.5 w-3.5" />
+                  Insta
                 </Button>
               </div>
               <Link

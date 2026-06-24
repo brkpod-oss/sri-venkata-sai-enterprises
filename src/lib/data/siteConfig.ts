@@ -22,6 +22,7 @@ export const siteConfig = {
     line4: "Kurnool Road, Ongole - 523001",
     city: "Ongole",
     pincode: "523001",
+    googleMapsUrl: "https://maps.app.goo.gl/JEa4w8bcfo745e7g6",
   },
 
   // Hours

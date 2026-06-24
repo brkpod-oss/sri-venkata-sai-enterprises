@@ -55,10 +55,19 @@ export function toTestimonials(data: SanityTestimonial[]): Testimonial[] {
 }
 
 export function toBrand(s: SanityBrand): Brand {
+  const slug = s.slug?.current || "";
+  const logoFallbacks: Record<string, string> = {
+    google: "/images/brand-logos/google pixel logo.webp",
+    infinix: "/images/brand-logos/infinix logo.png",
+    motorola: "/images/brand-logos/moto logo.png",
+    oneplus: "/images/brand-logos/onplus logo.jpg",
+    redmi: "/images/brand-logos/redmi logo.png",
+  };
+  const localLogo = logoFallbacks[slug] || `/images/brand-logos/${slug} logo.png`;
   return {
     name: s.name,
-    slug: s.slug?.current || "",
-    logo: s.logo || "",
+    slug,
+    logo: s.logo || localLogo,
     featured: s.featured || false,
   };
 }

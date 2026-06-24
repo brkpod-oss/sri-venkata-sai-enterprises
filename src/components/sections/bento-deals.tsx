@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, RefreshCw, CreditCard, Headphones } from "lucide-react";
+import { Sparkles } from "@/components/ui/sparkles";
 import type { SanityOffer } from "@/sanity/types";
 
 export function BentoDeals({ offers }: { offers?: SanityOffer[] }) {
@@ -85,13 +86,15 @@ export function BentoDeals({ offers }: { offers?: SanityOffer[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative flex h-[280px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md md:col-span-2"
+          className="group relative flex h-[280px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md md:col-span-2"
         >
           <div className="z-10 flex flex-col items-start">
             {c1.badge && (
-              <span className="mb-3 rounded-full bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-blue-600">
-                {c1.badge}
-              </span>
+              <Sparkles className="mb-3">
+                <span className="rounded-full bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-blue-600">
+                  {c1.badge}
+                </span>
+              </Sparkles>
             )}
             <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">{c1.title}</h3>
             {c1.subtitle && (
@@ -121,7 +124,7 @@ export function BentoDeals({ offers }: { offers?: SanityOffer[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex h-[280px] flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md"
+          className="group flex h-[280px] flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md"
         >
           <div>
             <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
@@ -153,7 +156,7 @@ export function BentoDeals({ offers }: { offers?: SanityOffer[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex h-[240px] flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md"
+          className="group flex h-[240px] flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md"
         >
           <div>
             <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
@@ -177,13 +180,15 @@ export function BentoDeals({ offers }: { offers?: SanityOffer[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="relative flex h-[240px] flex-col justify-center overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md md:col-span-2"
+          className="group relative flex h-[240px] flex-col justify-center overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md md:col-span-2"
         >
           <div className="z-10 flex flex-col items-start">
             {c4.badge && (
-              <span className="mb-3 rounded-full bg-amber-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-amber-600">
-                {c4.badge}
-              </span>
+              <Sparkles className="mb-3">
+                <span className="rounded-full bg-amber-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-amber-600">
+                  {c4.badge}
+                </span>
+              </Sparkles>
             )}
             <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">{c4.title}</h3>
             {c4.subtitle && (
@@ -211,7 +216,7 @@ export function BentoDeals({ offers }: { offers?: SanityOffer[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col items-center justify-between gap-5 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:flex-row md:col-span-3 transition-all hover:shadow-md"
+          className="group flex flex-col items-center justify-between gap-5 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:flex-row md:col-span-3 transition-all hover:shadow-md"
         >
           <div className="flex items-center gap-5">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">

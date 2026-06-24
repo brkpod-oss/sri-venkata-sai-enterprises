@@ -111,7 +111,7 @@ export function ProductSearch({ onSelect }: ProductSearchProps) {
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder="Search products, brands..."
-          className="h-10 w-full rounded-full border border-slate-100 bg-slate-100/60 pl-11 pr-10 text-sm outline-none transition-all focus:border-blue-500/80 focus:bg-white focus:ring-2 focus:ring-blue-100/50"
+          className="h-9 w-full rounded-full border border-slate-100 bg-slate-100/60 pl-10 pr-10 text-sm outline-none transition-all focus:border-blue-500/80 focus:bg-white focus:ring-2 focus:ring-blue-100/50"
         />
         {query && (
           <button

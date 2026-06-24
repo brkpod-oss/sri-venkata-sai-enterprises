@@ -63,13 +63,20 @@ export default async function RootLayout({
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.addEventListener("DOMContentLoaded",()=>document.querySelectorAll("[bis_skin_checked]").forEach(e=>e.removeAttribute("bis_skin_checked")));`,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning className="min-h-screen bg-white text-slate-900 antialiased">
         <SkipLink />
         <CartProvider>
           <Nav settings={settings} />
           <div id="main">{children}</div>
           <WhatsAppFloat settings={settings} />
-          <SanityLive />
+          {process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && <SanityLive />}
           <Toaster position="top-right" theme="dark" />
         </CartProvider>
       </body>
