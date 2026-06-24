@@ -58,9 +58,9 @@ export async function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
 
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL &&
-    process.env.NEXT_PUBLIC_SITE_URL !== "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL !== "https://www.srivenkatasaienterprises.com"
       ? process.env.NEXT_PUBLIC_SITE_URL
-      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+      : process.env.NEXT_PUBLIC_SITE_URL || "https://www.srivenkatasaienterprises.com";
 
   const jsonLd = {
     "@context": "https://schema.org",
