@@ -123,7 +123,7 @@ export function ProductGrid({ products }: { products: Product[] }) {
                       </p>
 
                       <div className="mt-auto mb-4 flex items-end justify-between">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col" suppressHydrationWarning>
                           {originalPrice && !enquiry && startingPrice !== undefined && (
                             <span className="text-[11px] font-medium text-slate-400 line-through mb-0.5">
                               {formatPrice(originalPrice)}
