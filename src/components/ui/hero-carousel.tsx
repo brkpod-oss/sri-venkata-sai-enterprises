@@ -18,11 +18,12 @@ interface HeroCarouselProps {
   autoPlayInterval?: number;
 }
 
-export function HeroCarousel({ images, className = "", autoPlayInterval = 4500 }: HeroCarouselProps) {
+export function HeroCarousel({ images, className = "", autoPlayInterval = 1500 }: HeroCarouselProps) {
   return (
     <Swiper
       modules={[Autoplay]}
       autoplay={{ delay: autoPlayInterval, disableOnInteraction: false, pauseOnMouseEnter: true }}
+      speed={400}
       rewind={true}
       className={className}
     >

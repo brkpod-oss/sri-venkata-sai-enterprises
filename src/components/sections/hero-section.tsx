@@ -91,7 +91,7 @@ export function HeroSection({
     if (isHovered || reducedMotion) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 4000);
+    }, 2000);
     return () => clearInterval(interval);
   }, [isHovered, reducedMotion, maxIndex]);
 

@@ -7,26 +7,26 @@ const cards = [
   {
     id: 1,
     src: "/images/promo-banner/promo-1.png",
-    alt: "Latest smartphone deals and offers at Sri Venkata Sai Enterprises",
-    href: "/products",
+    alt: "iQOO 15 flagship smartphone - available at Sri Venkata Sai Enterprises",
+    href: "/products/iqoo-15",
   },
   {
     id: 2,
     src: "/images/promo-banner/promo-2.png",
-    alt: "EMI and exchange offers on branded smartphones",
-    href: "/products",
+    alt: "Motorola Edge 70 Pro - 200MP camera flagship phone",
+    href: "/products/moto-edge-70-pro",
   },
   {
     id: 3,
     src: "/images/promo-banner/promo-3.png",
-    alt: "New arrivals in Samsung, Vivo, and iPhone models",
-    href: "/products",
+    alt: "iPhone 17 Series - iPhone 17, Pro, Pro Max and Air",
+    href: "/category/apple",
   },
   {
     id: 4,
     src: "/images/promo-banner/promo-4.png",
-    alt: "Accessories and gadgets for all phone brands",
-    href: "/products",
+    alt: "iQOO Neo 10 Pro - flagship gaming smartphone",
+    href: "/products/iqoo-neo-10-pro",
   },
 ];
 
