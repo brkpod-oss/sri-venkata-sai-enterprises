@@ -11,27 +11,49 @@ FLIPKART_BRANDS = ["Motorola", "Oppo", "Vivo", "Realme", "Poco", "Nothing"]
 AMAZON_BRANDS = ["iQOO", "Redmi"]
 
 
+def get_assigned_source(product: dict) -> str | None:
+    brand = (product.get("brand") or {}).get("name", "")
+    if brand in FLIPKART_BRANDS:
+        return "flipkart"
+    if brand in AMAZON_BRANDS:
+        return "amazon"
+    return None
+
+
 def sync_prices():
     print("Starting Price Sync...")
     products = fetch_all_products()
     updated_count = 0
 
     for product in products:
-        amz_price = get_amazon_price(product.get("amazonUrl"))
-        flip_price = get_flipkart_price(product.get("flipkartUrl"))
-
-        prices = [p for p in [amz_price, flip_price] if p is not None]
-        if not prices:
+        source = get_assigned_source(product)
+        if source is None:
             continue
 
-        display_price = min(prices)
+        amz_price = None
+        flip_price = None
+        display_price = None
+
+        if source == "flipkart":
+            flip_price = get_flipkart_price(product.get("flipkartUrl"))
+            display_price = flip_price
+        elif source == "amazon":
+            amz_price = get_amazon_price(product.get("amazonUrl"))
+            display_price = amz_price
+
+        if display_price is None:
+            continue
 
         if product.get("price") != display_price:
             update_price(product["_id"], amz_price, flip_price, display_price)
             updated_count += 1
-            print(f"Updated {product['name']}: ₹{display_price}")
+            brand = (product.get("brand") or {}).get("name", "")
+            print(f"Updated {product['name']} ({brand}): ₹{display_price} via {source}")
 
     print(f"✓ Checked {len(products)} phones. Updated {updated_count} prices.")
+
+
+TRACKED_BRANDS = FLIPKART_BRANDS + AMAZON_BRANDS
 
 
 def check_launches():
@@ -39,13 +61,12 @@ def check_launches():
     existing_products = fetch_all_products()
     existing_titles = [p["name"] for p in existing_products]
 
-    scraped_phones = [
-        {"raw_name": "Redmi Note 13 Pro 5G (256GB+8GB) Purple", "brand": "Redmi"},
-        {"raw_name": "Motorola Edge 50 Pro", "brand": "Motorola"},
-    ]
+    scraped_phones = []
 
     added_count = 0
     for phone in scraped_phones:
+        if phone["brand"] not in TRACKED_BRANDS:
+            continue
         ai_data = normalize_and_describe(phone["raw_name"], phone["brand"])
         clean_title = ai_data.get("title", phone["raw_name"])
 
