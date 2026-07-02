@@ -21,20 +21,12 @@ export const brands: Brand[] = [
   { name: "Samsung", slug: "samsung", featured: true, logo: "/images/brand-logos/samsung logo.png" },
   { name: "Apple", slug: "apple", featured: true, logo: "/images/brand-logos/apple logo.png" },
   { name: "Google", slug: "google", featured: true, logo: "/images/brand-logos/google pixel logo.webp" },
-  { name: "CMF", slug: "cmf", featured: true },
   { name: "Redmi", slug: "redmi", featured: true, logo: "/images/brand-logos/redmi logo.png" },
   { name: "Infinix", slug: "infinix", featured: true, logo: "/images/brand-logos/infinix logo.png" },
   { name: "OnePlus", slug: "oneplus", featured: true, logo: "/images/brand-logos/onplus logo.jpg" },
   { name: "POCO", slug: "poco", featured: true, logo: "/images/brand-logos/poco logo.png" },
   { name: "Narzo", slug: "narzo", featured: true, logo: "/images/brand-logos/narzo logo.png" },
-  { name: "AI+", slug: "ai-plus", featured: false },
-  { name: "Coolpad", slug: "coolpad", featured: false },
   { name: "HMD", slug: "hmd", featured: false },
-  { name: "Itel", slug: "itel", featured: false },
-  { name: "Jio", slug: "jio", featured: false },
-  { name: "Lava", slug: "lava", featured: false },
-  { name: "Peace", slug: "peace", featured: false },
-  { name: "Snexian", slug: "snexian", featured: false },
 ];
 
 export function getAllBrands(): Brand[] {
